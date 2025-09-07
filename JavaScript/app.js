@@ -11,12 +11,15 @@ function displayPodcasts(podcastList) {
 
     tile.innerHTML = `
       <div class="border border-gray-200 rounded-lg p-4">
-        <img src="${podcast.image}" alt="${podcast.title}" class="w-full h-50 rounded-lg object-cover">
+        <img src="${podcast.image}" alt="${podcast.title}" class="w-full h-full rounded-lg object-cover">
       <div class="p-4">
         <h2 class="text-lg font-bold mb-2">${podcast.title}</h2>
-        <p class="text-sm text-gray-300"><div class="bg-[url('/icons/calendar.png')] h-3 w-3 bg-cover bg-center"></div>${podcast.seasons} Seasons</p>
-        <p class="text-xs text-gray-700 mt-2">${podcast.genres}</p>
-        <p class="text-sm text-gray-300 mt-2">${podcast.updated}</p>
+        <div class="flex items-center space-x-2">
+          <div class="bg-[url('/icons/calendar.png')] h-3 w-3 bg-cover bg-center"></div>
+          <p class="text-sm text-gray-500">${podcast.seasons} Seasons</p>
+        </div>
+        <p class="text-xs text-gray-700 mt-2 ml-4">${podcast.genres}</p>
+        <p class="text-sm text-gray-400 mt-2">${podcast.updated}</p>
       </div>
       </div>
     `;
