@@ -4,11 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Podcast App</title>
-    <link rel="stylesheet" href="styles.css" />
+    <!-- <link rel="stylesheet" href="styles.css" /> -->
     <link href="./src/output.css" rel="stylesheet" />
   </head>
   <body class="bg-white">
-    <header class="bg-white border-gray-400 shadow h-12 flex items-center pl-3">
+    <header class="bg-white border-gray-400 shadow h-12 flex items-center pl-4">
       <div
         class="bg-[url('/icons/podcast-.png')] bg-cover bg-center h-6 w-6 mr-1"
       ></div>
@@ -23,7 +23,7 @@
         ></div>
       </div>
     </header>
-    <main class="pl-3 pr-3 pt-3 pb-1">
+    <main class="pl-5 pr-3 pt-6 pb-1">
       <section class="space-x-1">
         <span class="text-sm font-semibold">Filter by:</span>
         <select
@@ -46,10 +46,12 @@
       </section>
       <section aria-label="Podcast Grid">
         <div
-          id="Grid"
+          id="podcast-container"
           class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 p-4"
         ></div>
       </section>
     </main>
+
+    <script defer src="./JavaScript/app.js" type="module"></script>
   </body>
 </html>
