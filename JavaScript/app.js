@@ -1,5 +1,8 @@
 import { podcasts } from "./data.js";
 import { genres } from "./data.js";
+import { initModal } from "./pod-modal.js";
+
+const openModal = initModal();
 
 // Function to get genre titles from genre IDs
 function getGenreTitles(ids) {
@@ -27,7 +30,7 @@ function displayPodcasts(podcastList) {
     tile.classList.add("podcast-tile", "shadow", "overflow-hidden", "bg-white");
 
     tile.innerHTML = `
-      <div class="border border-gray-200 rounded-lg p-4">
+      <div class="transition-transform duration-300 ease-in-out hover:scale-105 border border-gray-200 rounded-lg p-4">
         <img src="${podcast.image}" alt="${
       podcast.title
     }" class="w-full h-60 rounded-lg object-cover">
@@ -48,6 +51,9 @@ function displayPodcasts(podcastList) {
       </div>
       </div>
     `;
+
+    tile.addEventListener("click", () => openModal(podcast));
+
     console.log("Podcast tiles loaded");
     container.appendChild(tile);
   });
