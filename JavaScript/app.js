@@ -1,5 +1,17 @@
 import { podcasts } from "./data.js";
+import { genres } from "./data.js";
 
+// Function to get genre titles from genre IDs
+function getGenreTitles(ids) {
+  return ids
+    .map((id) => {
+      const title = genres.find((g) => g.id === id)?.title || "Unknown";
+      return `<span>${title}</span>`;
+    })
+    .join("");
+}
+
+// Function to calculate days ago from a given date
 function daysAgo(updated) {
   const diff = Date.now() - new Date(updated).getTime();
   return Math.floor(diff / (1000 * 60 * 60 * 24));
@@ -18,21 +30,25 @@ function displayPodcasts(podcastList) {
       <div class="border border-gray-200 rounded-lg p-4">
         <img src="${podcast.image}" alt="${
       podcast.title
-    }" class="w-full h-full rounded-lg object-cover">
-      <div class="p-4">
-        <h2 class="text-lg font-bold mb-2">${podcast.title}</h2>
-        <div class="flex items-center space-x-2">
-          <div class="bg-[url('/icons/calendar.png')] h-3 w-3 bg-cover bg-center"></div>
-          <p class="text-sm text-gray-500">${podcast.seasons} Seasons</p>
+    }" class="w-full h-60 rounded-lg object-cover">
+      <div class="pl-1 pt-4 pr-3 pb-1">
+        <h2 class="text-lg font-semibold mb-2">${podcast.title}</h2>
+        <div class="flex items-center space-x-1">
+          <div class="bg-[url('/icons/calendar.png')] h-4 w-4 mr-1.5 bg-cover bg-center"></div>
+          <p class="text-sm font-semibold text-gray-500">${
+            podcast.seasons
+          } Seasons</p>
         </div>
-        <p class="text-xs text-gray-700 mt-2 ml-4">${podcast.genres}</p>
-        <p class="text-sm text-gray-400 mt-2">Updated ${daysAgo(
+        <p class="text-sm font-bold text-gray-700 mt-3 ml-2.5 mb-3 flex space-x-3">${getGenreTitles(
+          podcast.genres
+        )}</p>
+        <p class="text-sm font-semibold text-[#898f9a] mt-2">Updated ${daysAgo(
           podcast.updated
         )} days ago</p>
       </div>
       </div>
     `;
-
+    console.log("Podcast tiles loaded");
     container.appendChild(tile);
   });
 }
